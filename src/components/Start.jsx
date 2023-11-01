@@ -20,7 +20,7 @@ const Start = ({menuHandle}) => {
             }
         
             <div className='introMenu'>
-                <h2>Bubble Blast.</h2>
+                <h2>Bubble Blast.</h2>
                 <div className='introOptions'>
                     <p onClick={menuHandle}>Quick Start</p>
                     <p onClick={newGameStart}>New Game</p>
