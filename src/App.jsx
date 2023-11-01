@@ -8,24 +8,26 @@ import Start from './components/Start'
 function App() {
   const [point, setPoint] = useState(0)
   const [start, setStart] = useState(false)
+  const [formulaeProp, setFormulae] = useState("");
   const handleClick=(p)=>{
     setPoint(point + parseInt(p))
   }
   const menuHandle=(e)=>{
     let selected=e.target.innerText
     switch(selected){
-      case "RESUME":
-        setStart(true)
-        break;
-      case "NEW GAME":
-        setStart(true)
-        break;
-      case "OPTIONS":
-        console.log("options")
-        break;
-      case "EXIT":
-        window.close();
+      case "QUICK START":
+        setStart(true);
       break;
+      case "OPTIONS":
+        console.log("options");
+      break;
+      case "EXIT":
+        self.close();
+      break;
+      // formulae works
+      default:
+        setStart(true)
+        setFormulae(selected)
     }
   }
   return (
@@ -36,7 +38,7 @@ function App() {
       <section>
         <div className='container'>
           <Heading tPoint={point}/>
-          <Main handleClick={handleClick}/>
+          <Main handleClick={handleClick} formulaeProp={formulaeProp}/>
           {/* <Footer/> */}
         </div>
       </section>

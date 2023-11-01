@@ -25,24 +25,26 @@ button.box{
     display: flex;
     font-weight: 800;
     color:#000b;
+    background: #ffffff3c;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow:inset 2px 2px 5px rgba(156, 129, 113, 0.567) ,0 0 5px rgba(0, 0, 0, 0.2);
     transition:all 0.25s;
 }
 button.box:not(:disabled) {
     border-color: #c5c6da;
 }
+button.box:disabled{
+    background: #c8c8c8;
+    border:"2px solid transparent";
+    box-shadow:none;
+    opacity: 0.4;
+    outline: none;
+}
 button.box:focus,
 button.box:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
     transform: scale(1.2)
-}
-button.box:disabled{
-    opacity:"0.5";
-    color:#0004;
-    border:"2px solid transparent";
-    outline: none;
 }
 
 .container_heading{
@@ -51,6 +53,15 @@ button.box:disabled{
     align-items: center;
     background-color: rgb(108, 242, 211);
 }
+.container_heading *:nth-child(2){
+    width: fit-content;
+    border: 2px solid rgba(237, 28, 28, 0.427);
+}
+.container_heading *{
+    width: 130px;
+    text-align: center;
+}
+
 .container_heading p{
     background-color: rgb(255, 255, 255);
     display: inline-block;
@@ -97,35 +108,85 @@ button.box:disabled{
         background-position: 100px;
     }
 }
-.intro .introMenu{
-    margin-left: 10px;
+.intro .newGame{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    border-radius: 10px;
+    box-shadow:inset 2px 2px 15px rgba(243, 30, 30, 0.4) ,0px 0px 10px rgb(0, 0, 0, 0.4);
+    
+    background: #f0b3afcc;
+    /* width: 80%; */
+    position: absolute;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+.intro .newGame p{ 
+    display: inline-block;
+    padding: 10px 60px;
+    border-radius: 5px;
+    color: #000b;
+    background-color: white;
+    box-shadow:inset  2px 2px 5px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-weight: 800;
+    transition:all 0.2s;
+}
+#backBlur{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: #fff5;
+    height: 100vh;
+    width: 100vw;
+    backdrop-filter: blur(2px);
+}
+.intro .newGame p:hover{ 
+    border: 2px solid rgb(67, 67, 67);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+.intro .newGame p:active{ 
+    transform: scale(0.8);
+}
+
+.introMenu{
+    min-width: 300px;
+    width: 30%;
 }
 .intro .introMenu h2{
+    display: inline-block;  
     font-size:3em;
+    text-align: center;
     text-decoration: underline;
-    width: 25%;
-    text-align: right;
     letter-spacing: 2px;
     background-image: url(./asset/gameStart.jpg);
     background-position: center;
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    width: 100%;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
     animation: backText 15s infinite alternate-reverse ease-in-out;
 }
 @keyframes backText {
     0%{
-        background-size: 100% 100%;
+        background-size: 250% 250%;
         transform: translateX(30px);
-        background-position: 0px;
     }
     50%{
-        background-size: 250% 250%;
-        background-position: 0px;
+        background-size: 100% 100%;
     }
     75%{
-        background-size: 400% 150%;
-        background-position: -40px;
+        background-size: 150% 250%;
+    }
+    100%{
+        background-size: 250% 250%;
     }
 }
 .introOptions{
@@ -134,7 +195,6 @@ button.box:disabled{
     flex-direction: column;
     justify-content: space-between;
     line-height: 2;
-    max-width: 25%;
     min-width:fit-content;
     text-align: right;
 }
@@ -160,9 +220,22 @@ button.box:disabled{
     transform: skewX(0deg) scale(0.8);
 }
 .menuInfo{
-    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+@media only screen and (max-device-width:768px){
+    .introMenu{
+        width: 70%;
+    }
+    .intro{
+        background-position: center;
+    } 
+    button.box{
+        color:#000b;
+        background: #c8c8c8;
+    }
 }
